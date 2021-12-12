@@ -31,7 +31,7 @@ private fun provideGson(): Gson = GsonBuilder().create()
 private fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().apply {
     addInterceptor { chain ->
         val request = chain.request().newBuilder().apply {
-            val credentials = Credentials.basic("oizo", "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")
+            val credentials = Credentials.basic(BuildConfig.GITHUB_USER, BuildConfig.GITHUB_PAT)
             addHeader("Authorization", credentials)
         }.build()
         chain.proceed(request)

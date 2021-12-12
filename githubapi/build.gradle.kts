@@ -3,6 +3,8 @@ plugins {
     id(Plugins.kotlin_android)
 }
 
+val credentials = GitHubCredentials(rootProject)
+
 android {
     compileSdk = AndroidBuild.compileSdkVersion
 
@@ -10,6 +12,8 @@ android {
         minSdk = AndroidBuild.minSdkVersion
         targetSdk = AndroidBuild.targetSdkVersion
         testInstrumentationRunner = Dependencies.Android.X.Test.junit_runner
+        buildConfigField("String", "GITHUB_USER", "\"${credentials.user}\"")
+        buildConfigField("String", "GITHUB_PAT", "\"${credentials.pat}\"")
     }
 
     buildTypes {
