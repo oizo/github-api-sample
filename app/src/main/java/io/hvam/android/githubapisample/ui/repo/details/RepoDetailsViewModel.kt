@@ -24,7 +24,7 @@ class RepoDetailsViewModel : ViewModel() {
 }
 
 sealed class Status {
-    object Loading: Status()
-    data class Error(val msg: String): Status()
-    data class Success(val details: String): Status()
+    object Loading : Status()
+    data class Error(val msg: String) : Status()
+    data class Success(val details: String) : Status()
 }

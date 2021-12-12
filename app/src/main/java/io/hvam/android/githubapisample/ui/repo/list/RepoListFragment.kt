@@ -14,11 +14,12 @@ class RepoListFragment : Fragment() {
     private val viewModel: RepoListViewModel by viewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // binding might leak, should be taken care of
-        val binding = FragmentRepoListBinding.inflate(inflater, container,false)
+        val binding = FragmentRepoListBinding.inflate(inflater, container, false)
         binding.vm = viewModel
         viewModel.onNavigate.observe(viewLifecycleOwner) {
             if (it) {
@@ -28,5 +29,4 @@ class RepoListFragment : Fragment() {
         }
         return binding.root
     }
-
 }

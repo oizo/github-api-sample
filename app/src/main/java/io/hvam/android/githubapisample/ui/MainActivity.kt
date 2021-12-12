@@ -1,10 +1,10 @@
-package io.hvam.android.githubapisample
+package io.hvam.android.githubapisample.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import io.hvam.android.githubapisample.ui.main.MainFragment
+import io.hvam.android.githubapisample.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -16,11 +16,12 @@ class RepoDetailsFragment : Fragment() {
     private val viewModel: RepoDetailsViewModel by viewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // binding might leak, should be taken care of
-        val binding = FragmentRepoDetailsBinding.inflate(inflater, container,false)
+        val binding = FragmentRepoDetailsBinding.inflate(inflater, container, false)
         binding.vm = viewModel
         return binding.root
     }
@@ -35,7 +36,7 @@ class RepoDetailsFragment : Fragment() {
 }
 
 @BindingAdapter("repoDetails")
-fun bindRepoDetails(view: TextView, status: Status)= when (status) {
+fun bindRepoDetails(view: TextView, status: Status) = when (status) {
     is Status.Loading -> view.text = "Loading"
     is Status.Success -> view.text = status.details
     is Status.Error -> view.text = status.msg
