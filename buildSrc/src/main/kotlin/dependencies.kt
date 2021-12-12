@@ -32,7 +32,7 @@ object Versions {
     const val ktlint = "9.4.1"
     const val navigation = "2.4.0-beta02"
     const val coroutines = "1.5.2"
-    const val koin = "2.2.2"
+    const val koin = "3.1.4"
     const val google_material = "1.4.0"
 }
 
@@ -44,6 +44,7 @@ object Plugins {
         const val android = "org.jetbrains.kotlin.android"
     }
     const val navigation_safe_args = "androidx.navigation.safeargs.kotlin"
+    const val kapt = "kotlin-kapt"
 }
 
 object Dependencies {
@@ -82,10 +83,7 @@ object Dependencies {
         const val material = "com.google.android.material:material:${Versions.google_material}"
     }
     object Koin {
-        const val core = "io.insert-koin:koin-core:${Versions.koin}"
         const val android = "io.insert-koin:koin-android:${Versions.koin}"
-        const val viewmodel = "io.insert-koin:koin-androidx-viewmodel:${Versions.koin}"
-        const val scope = "io.insert-koin:koin-androidx-scope:${Versions.koin}"
 
     }
     const val junit = "junit:junit:${Versions.junit}"

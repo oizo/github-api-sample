@@ -2,6 +2,7 @@ plugins {
     id(Plugins.android_application)
     id(Plugins.kotlin_android)
     id(Plugins.navigation_safe_args)
+    id(Plugins.kapt)
 }
 
 android {
@@ -37,6 +38,9 @@ android {
     kotlinOptions {
         jvmTarget = Java.version.toString()
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -55,10 +59,7 @@ dependencies {
     implementation(Dependencies.Android.X.Navigation.fragment_ktx)
     implementation(Dependencies.Android.X.Navigation.ui_ktx)
     // Koin - Dependency injection
-    implementation(Dependencies.Koin.core)
     implementation(Dependencies.Koin.android)
-    implementation(Dependencies.Koin.viewmodel)
-    implementation(Dependencies.Koin.scope)
     // Timber - Logging
     implementation(Dependencies.timber)
     // Junit - Unit test framework
