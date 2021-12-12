@@ -10,12 +10,12 @@
               android:label="GitHub repositories"
               tools:layout="@layout/fragment_repo_list">
 
-        <action android:id="@+id/repoDetails"
-                app:destination="@id/repoDetails"/>
+        <action android:id="@+id/toRepoDetails"
+                app:destination="@id/toRepoDetails"/>
     </fragment>
 
-    <fragment android:id="@+id/repoDetails"
-              android:name="io.hvam.android.githubapisample.ui.main.RepoDetailsFragment"
+    <fragment android:id="@+id/toRepoDetails"
+              android:name="io.hvam.android.githubapisample.ui.repo.details.RepoDetailsFragment"
               android:label="GitHub repository details"
               tools:layout="@layout/fragment_repo_details">
 

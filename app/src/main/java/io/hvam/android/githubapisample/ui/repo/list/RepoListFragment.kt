@@ -20,9 +20,9 @@ class RepoListFragment : Fragment() {
         // binding might leak, should be taken care of
         val binding = FragmentRepoListBinding.inflate(inflater, container,false)
         binding.vm = viewModel
-        viewModel.onNavigate.observe(this) {
+        viewModel.onNavigate.observe(viewLifecycleOwner) {
             if (it) {
-                val direction = RepoListFragmentDirections.repoDetails("unknown")
+                val direction = RepoListFragmentDirections.toRepoDetails("unknown")
                 findNavController().navigate(direction)
             }
         }
