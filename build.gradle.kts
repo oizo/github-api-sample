@@ -10,7 +10,10 @@ buildscript {
 }
 
 plugins {
-    id(Plugins.ktlint) version Versions.ktlint
+    id(Plugins.Android.application) version Versions.android_gradle_plugin apply false
+    id(Plugins.Android.library) version Versions.android_gradle_plugin apply false
+    id(Plugins.Kotlin.android) version Versions.kotlin apply false
+    id(Plugins.ktlint) version Versions.ktlint apply false
 }
 
 subprojects {

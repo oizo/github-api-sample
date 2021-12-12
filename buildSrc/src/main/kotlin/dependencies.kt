@@ -22,7 +22,7 @@ fun versionName(): String = "$versionMajor.$versionMinor.$versionPatch-$versionB
 
 object Versions {
     const val kotlin = "1.5.32"
-    const val android_gradle_plugin = "4.2.0"
+    const val android_gradle_plugin = "7.0.4"
     const val junit = "4.13.1"
     const val mockk = "1.12.1"
     const val appcompat = "1.4.0"
@@ -37,7 +37,10 @@ object Versions {
 }
 
 object Plugins {
-    const val android_application = "com.android.application"
+    object Android {
+        const val application = "com.android.application"
+        const val library = "com.android.library"
+    }
     const val kotlin_android = "kotlin-android"
     const val ktlint = "org.jlleitschuh.gradle.ktlint"
     object Kotlin {
@@ -64,6 +67,8 @@ object Dependencies {
         object X {
             object Test {
                 const val junit_runner = "androidx.test.runner.AndroidJUnitRunner"
+                const val junit = "androidx.test.ext:junit:1.1.3"
+                const val espresso = "androidx.test.espresso:espresso-core:3.4.0"
             }
             const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
             const val ktx = "androidx.core:core-ktx:${Versions.ktx}"

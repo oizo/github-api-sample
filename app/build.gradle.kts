@@ -1,16 +1,16 @@
 plugins {
-    id(Plugins.android_application)
+    id(Plugins.Android.application)
     id(Plugins.kotlin_android)
     id(Plugins.navigation_safe_args)
     id(Plugins.kapt)
 }
 
 android {
-    compileSdkVersion(AndroidBuild.compileSdkVersion)
+    compileSdk = AndroidBuild.compileSdkVersion
     defaultConfig {
         applicationId = "io.hvam.android.githubapisample"
-        minSdkVersion(AndroidBuild.minSdkVersion)
-        targetSdkVersion(AndroidBuild.targetSdkVersion)
+        minSdk = AndroidBuild.minSdkVersion
+        targetSdk = AndroidBuild.targetSdkVersion
         versionCode = versionCode()
         versionName = versionName()
         testInstrumentationRunner = Dependencies.Android.X.Test.junit_runner
