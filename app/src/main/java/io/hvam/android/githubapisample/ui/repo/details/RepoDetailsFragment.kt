@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import io.hvam.android.githubapisample.databinding.FragmentRepoDetailsBinding
-import io.hvam.android.githubapisample.ui.main.RepoDetailsFragmentArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RepoDetailsFragment : Fragment() {

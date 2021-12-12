@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":githubapi"))
     implementation(Dependencies.Kotlin.stdlib_jdk8)
     implementation(Dependencies.Android.X.ktx)
     implementation(Dependencies.Android.X.appcompat)
@@ -67,4 +68,7 @@ dependencies {
     testImplementation(Dependencies.Kotlin.junit)
     // Mockk.io - Mocking framework
     testImplementation(Dependencies.Mockk.android)
+    // Integration test
+    androidTestImplementation(Dependencies.Android.X.Test.junit)
+    androidTestImplementation(Dependencies.Android.X.Test.espresso)
 }

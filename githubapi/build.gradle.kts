@@ -1,5 +1,5 @@
 plugins {
-    id(Plugins.Android.application)
+    id(Plugins.Android.library)
     id(Plugins.kotlin_android)
 }
 
@@ -31,10 +31,21 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.Square.okhttp)
+    implementation(Dependencies.Square.retrofit)
+    implementation(Dependencies.Square.gson_converter)
     implementation(Dependencies.Android.X.ktx)
     implementation(Dependencies.Android.X.appcompat)
     // Material design components
     implementation(Dependencies.Google.material)
+    // Kotlin coroutines
+    implementation(Dependencies.Kotlin.X.Coroutines.core)
+    implementation(Dependencies.Kotlin.X.Coroutines.android)
+    api(Dependencies.kotlin_result)
+    // Koin - Dependency injection
+    implementation(Dependencies.Koin.android)
+    // Timber - Logging
+    implementation(Dependencies.timber)
     // Junit - Unit test framework
     testImplementation(Dependencies.junit)
     // Integration test

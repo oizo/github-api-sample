@@ -5,7 +5,7 @@ import io.hvam.android.githubapisample.ui.repo.list.RepoListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val koinModule = module {
+val appModule = module {
     viewModel { RepoListViewModel() }
     viewModel { RepoDetailsViewModel() }
 }

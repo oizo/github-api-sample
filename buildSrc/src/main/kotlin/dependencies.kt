@@ -34,6 +34,9 @@ object Versions {
     const val coroutines = "1.5.2"
     const val koin = "3.1.4"
     const val google_material = "1.4.0"
+    const val retrofit = "2.9.0"
+    const val okhttp = "4.9.3"
+    const val kotlin_result = "1.1.13"
 }
 
 object Plugins {
@@ -96,6 +99,13 @@ object Dependencies {
     object Mockk {
         const val android = "io.mockk:mockk-android:${Versions.mockk}"
     }
+    object Square {
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val gson_converter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+        const val okhttp = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+
+    }
+    const val kotlin_result = "com.michael-bull.kotlin-result:kotlin-result:${Versions.kotlin_result}"
 }
 
 private fun kotlin(module: String, version: String? = Versions.kotlin): String =
