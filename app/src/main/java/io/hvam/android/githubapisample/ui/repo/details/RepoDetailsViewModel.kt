@@ -3,28 +3,28 @@ package io.hvam.android.githubapisample.ui.repo.details
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
+import io.hvam.android.githubapi.model.RepoInfo
 import kotlinx.coroutines.launch
-import kotlin.random.Random
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class RepoDetailsViewModel : ViewModel() {
+class RepoDetailsViewModel : ViewModel(), KoinComponent {
 
-    val status = MutableLiveData<Status>(Status.Loading)
+    val status = MutableLiveData<UiState>(UiState.Loading)
+    private val gson: Gson by inject()
 
-    fun fetchRepoDetails(repoName: String) {
+    fun fetchRepoDetails(repoJson: String) {
         viewModelScope.launch {
-            status.value = Status.Loading
-            Thread.sleep(1000)
-            status.value = if (Random.nextBoolean()) {
-                Status.Success("Yaii! $repoName")
-            } else {
-                Status.Error("Buuh! $repoName")
-            }
+            status.value = UiState.Loading
+            val repo = gson.fromJson(repoJson, RepoInfo::class.java)
+            status.value = UiState.Success(repo)
         }
     }
 }
 
-sealed class Status {
-    object Loading : Status()
-    data class Error(val msg: String) : Status()
-    data class Success(val details: String) : Status()
+sealed class UiState {
+    object Loading : UiState()
+    data class Error(val msg: String) : UiState()
+    data class Success(val repo: RepoInfo) : UiState()
 }

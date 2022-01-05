@@ -34,9 +34,11 @@ object Versions {
     const val coroutines = "1.5.2"
     const val koin = "3.1.4"
     const val google_material = "1.4.0"
+    const val google_gson = "2.8.9"
     const val retrofit = "2.9.0"
     const val okhttp = "4.9.3"
     const val kotlin_result = "1.1.13"
+    const val glide = "4.11.0"
 }
 
 object Plugins {
@@ -89,6 +91,8 @@ object Dependencies {
     }
     object Google {
         const val material = "com.google.android.material:material:${Versions.google_material}"
+        const val gson = "com.google.code.gson:gson:${Versions.google_gson}"
+
     }
     object Koin {
         const val android = "io.insert-koin:koin-android:${Versions.koin}"
@@ -106,6 +110,7 @@ object Dependencies {
 
     }
     const val kotlin_result = "com.michael-bull.kotlin-result:kotlin-result:${Versions.kotlin_result}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
 
 private fun kotlin(module: String, version: String? = Versions.kotlin): String =

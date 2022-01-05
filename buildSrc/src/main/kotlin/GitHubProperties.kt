@@ -2,13 +2,14 @@ import org.gradle.api.Project
 import java.io.FileInputStream
 import java.util.*
 
-class GitHubCredentials(
+class GitHubProperties(
     private val rootProject: Project
 ) {
 
     companion object {
         const val KEY_USER = "github_user"
         const val KEY_PAT = "github_pat"
+        const val KEY_ORGANIZATION = "github_organization"
         const val LOCAL_PROPERTIES = "local.properties"
     }
     private val localProperties = Properties().apply {
@@ -21,4 +22,5 @@ class GitHubCredentials(
     }
     val user: String = get(KEY_USER)
     val pat: String = get(KEY_PAT)
+    val org: String = get(KEY_ORGANIZATION)
 }

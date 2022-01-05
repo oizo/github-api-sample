@@ -5,6 +5,8 @@ plugins {
     id(Plugins.kapt)
 }
 
+val gitHub = GitHubProperties(rootProject)
+
 android {
     compileSdk = AndroidBuild.compileSdkVersion
     defaultConfig {
@@ -14,6 +16,7 @@ android {
         versionCode = versionCode()
         versionName = versionName()
         testInstrumentationRunner = Dependencies.Android.X.Test.junit_runner
+        buildConfigField("String", "GITHUB_ORGANIZATION", "\"${gitHub.org}\"")
     }
 
     buildTypes {
@@ -51,6 +54,8 @@ dependencies {
     implementation(Dependencies.Android.X.constraintlayout)
     implementation(Dependencies.Android.X.Lifecycle.livedata)
     implementation(Dependencies.Android.X.Lifecycle.viewmodel)
+    implementation(Dependencies.Google.gson)
+    implementation(Dependencies.glide)
     // Kotlin Coroutines
     implementation(Dependencies.Kotlin.X.Coroutines.core)
     implementation(Dependencies.Kotlin.X.Coroutines.android)

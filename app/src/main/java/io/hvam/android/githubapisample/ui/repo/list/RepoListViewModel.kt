@@ -9,6 +9,7 @@ import com.github.michaelbull.result.getOrElse
 import com.github.michaelbull.result.map
 import io.hvam.android.githubapi.GitHubRepository
 import io.hvam.android.githubapi.model.RepoInfo
+import io.hvam.android.githubapisample.BuildConfig
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -17,28 +18,38 @@ import timber.log.Timber
 class RepoListViewModel : ViewModel(), KoinComponent, DefaultLifecycleObserver {
 
     private val githubRepo: GitHubRepository by inject()
-    val onNavigate = MutableLiveData(false)
-    val status = MutableLiveData<RepoListState>(RepoListState.Loading)
+    val showDetails = MutableLiveData<RepoInfo?>(null)
+    val uiState = MutableLiveData<UiState>(UiState.Loading)
 
-    override fun onStart(owner: LifecycleOwner) {
-        super.onStart(owner)
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        uiState.value = UiState.Loading
         viewModelScope.launch {
-            status.value = RepoListState.Loading
-            status.value = githubRepo.repositories("square").map {
-                RepoListState.Success(it)
-            }.getOrElse { RepoListState.Error(it) }
+            // We should really consider pagination
+            // https://developer.android.com/topic/libraries/architecture/paging/v3-overview
+            uiState.value = githubRepo.repositories(BuildConfig.GITHUB_ORGANIZATION).map {
+                UiState.Success(it)
+            }.getOrElse {
+                UiState.Error(it)
+            }
         }
     }
 
-    fun onItemClicked() {
-        Timber.i("onItemClicked")
-        onNavigate.value = true
-        onNavigate.value = false
+    override fun onPause(owner: LifecycleOwner) {
+        super.onPause(owner)
+        showDetails.value = null
+    }
+
+    val onClick = object : RepoAdapter.ClickListener {
+        override fun onItemClicked(repo: RepoInfo) {
+            Timber.i("onItemClicked repo=${repo.name}")
+            showDetails.value = repo
+        }
     }
 }
 
-sealed class RepoListState {
-    object Loading : RepoListState()
-    data class Error(val error: String) : RepoListState()
-    data class Success(val repoInfoListState: List<RepoInfo>) : RepoListState()
+sealed class UiState {
+    object Loading : UiState()
+    data class Error(val error: String) : UiState()
+    data class Success(val repoInfoList: List<RepoInfo>) : UiState()
 }

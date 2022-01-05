@@ -8,17 +8,55 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="8dp" >
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/repoName"
+            repoName="@{vm.status}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Repository Details"
-            android:textSize="16sp"
-            repoDetails="@{vm.status}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/tmp_repo_name"
+            android:textSize="28sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/repoOwnerAvatar" />
+
+        <ImageView
+            android:id="@+id/repoOwnerAvatar"
+            repoAvatar="@{vm.status}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/repo_details_owner_avatar_content_description" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ownerName"
+            ownerName="@{vm.status}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/tmp_owner"
+            android:textSize="23sp"
+            app:layout_constraintStart_toEndOf="@+id/repoOwnerAvatar"
+            app:layout_constraintTop_toTopOf="@id/repoOwnerAvatar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ownerUrl"
+            ownerUrl="@{vm.status}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/tmp_url"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/repoOwnerAvatar"
+            app:layout_constraintTop_toBottomOf="@id/ownerName" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
