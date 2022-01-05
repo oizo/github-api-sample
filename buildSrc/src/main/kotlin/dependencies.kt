@@ -29,7 +29,7 @@ object Versions {
     const val ktx = "1.7.0"
     const val constraintlayout = "2.1.2"
     const val timber = "5.0.1"
-    const val ktlint = "10.0.0"
+    const val ktlint = "10.2.1"
     const val navigation = "2.4.0-beta02"
     const val coroutines = "1.5.2"
     const val koin = "3.1.4"
