@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -59,7 +60,7 @@ fun bindOwnerUrl(view: TextView, state: UiState) = when (state) {
 }
 
 @BindingAdapter("repoAvatar")
-fun bindRepoDetails(view: ImageView, state: UiState): Any = when (state) {
+fun bindRepoAvatar(view: ImageView, state: UiState): Any = when (state) {
     is UiState.Loading -> view.setImageResource(R.drawable.ic_launcher_foreground)
     is UiState.Success -> {
         Glide.with(view)
@@ -67,4 +68,11 @@ fun bindRepoDetails(view: ImageView, state: UiState): Any = when (state) {
             .into(view)
     }
     is UiState.Error -> view.setImageResource(com.google.android.material.R.drawable.mtrl_ic_error)
+}
+
+@BindingAdapter("repoUrl")
+fun bindRepoUrl(view: WebView, state: UiState) = when (state) {
+    is UiState.Loading -> { /* no-op */ }
+    is UiState.Success -> view.loadUrl(state.repo.html_url)
+    is UiState.Error -> view.loadUrl("https://google.com/")
 }
