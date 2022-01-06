@@ -71,6 +71,9 @@ dependencies {
     // Junit - Unit test framework
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.Kotlin.junit)
+    testImplementation(Dependencies.Android.X.Test.arch_core_testing)
+    // Koin test
+    testImplementation(Dependencies.Koin.test)
     // Mockk.io - Mocking framework
     testImplementation(Dependencies.Mockk.android)
     // Integration test

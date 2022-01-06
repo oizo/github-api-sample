@@ -39,6 +39,7 @@ object Versions {
     const val okhttp = "4.9.3"
     const val kotlin_result = "1.1.13"
     const val glide = "4.11.0"
+    const val arch = "2.1.0"
 }
 
 object Plugins {
@@ -74,6 +75,7 @@ object Dependencies {
                 const val junit_runner = "androidx.test.runner.AndroidJUnitRunner"
                 const val junit = "androidx.test.ext:junit:1.1.3"
                 const val espresso = "androidx.test.espresso:espresso-core:3.4.0"
+                const val arch_core_testing = "androidx.arch.core:core-testing:${Versions.arch}"
             }
             const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
             const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
@@ -96,12 +98,13 @@ object Dependencies {
     }
     object Koin {
         const val android = "io.insert-koin:koin-android:${Versions.koin}"
+        const val test = "io.insert-koin:koin-test:${Versions.koin}"
 
     }
     const val junit = "junit:junit:${Versions.junit}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     object Mockk {
-        const val android = "io.mockk:mockk-android:${Versions.mockk}"
+        const val android = "io.mockk:mockk:${Versions.mockk}"
     }
     object Square {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
